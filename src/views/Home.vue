@@ -1,18 +1,44 @@
+<!--
+Página base, exibe o box de cadastro do usuário.
+-->
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
-  </div>
+  <Suspense>
+    <template #default>
+      <section class="gupy-container">
+        <div class="gupy-container__block">
+          <Register />
+        </div>
+      </section>
+    </template>
+    <template #fallback>Loading...</template>
+  </Suspense>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import { defineComponent } from 'vue'
 
-export default {
-  name: "Home",
+import Register from '../components/candidate/Register.vue'
+
+export default defineComponent({
+  name: 'Home',
   components: {
-    HelloWorld,
+    Register
   },
-};
+  setup: () => {}
+})
 </script>
+
+<style lang="scss" scoped>
+.gupy-container {
+  background: rgb(168, 168, 168);
+  display: flex;
+  min-height: 100vh;
+  justify-content: space-around;
+  padding: 15px;
+  position: relative;
+
+  &__block {
+    width: 40%;
+  }
+}
+</style>
